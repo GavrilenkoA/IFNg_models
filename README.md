@@ -18,7 +18,9 @@ In the data folder, you will find the IFNg release and T-cell proliferation data
 Type of descriptors:
 
 LBE = Letter-based encoding 
+
 ZS = Z-scale descriptors 
+
 EF = Embedding features from ProtBert
 
 ```console
