@@ -13,7 +13,7 @@ For using the model to make predictions, the dataset should contain the peptides
 python predict.py --input_file --output_file 
 ```
 
-In the 'data' folder, you will find the IFNg release and T-cell proliferation datasets used in this study. To replicate the study, the training and test sets are available in the 'train' and 'test' folders. You can train and evaluate the model by running 'train_model_cv.py' and 'evaluate_model_cv.py'. The type of descriptors must be specified. The average metric will be printed, with the standard deviation shown in parentheses.
+In the `data` folder, you will find the IFNg release and T-cell proliferation datasets used in this study. To replicate the study, the training and test sets are available in the `train` and `test` folders. You can train and evaluate the model by running `train_model_cv.py` and `evaluate_model_cv.py`. The type of descriptors must be specified. The average metric will be printed, with the standard deviation shown in parentheses.
 
 Descriptors:
 
