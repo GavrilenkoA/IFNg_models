@@ -8,7 +8,7 @@ from utils import load_data, save_model, letter_based_encoding
 PATH = Path(__file__).parent.parent
 
 
-def train_model(cv=10, model_params=None):
+def train_model(model_params=None):
     
     if model_params is None:
         model_params = {
