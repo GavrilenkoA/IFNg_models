@@ -7,7 +7,7 @@ The requiered dependencies can be found in requirements.txt. We used python==3.9
 pip install -r requirements.txt.
 ```
 
-For using the model to make predictions, the dataset should contain the peptides in the first column and the MHC allele pseudo sequence in the second column. The output file will contain the input data with a "prediction" column containing the predictions.
+For using the model to make predictions, the dataset should contain the peptides in the first column and the MHC allele pseudo sequence in the second column. The output file will include the original input data along with an additional column for the predictions.
 
 ```console
 python predict.py --input_file --output_file 
