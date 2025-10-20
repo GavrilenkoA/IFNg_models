@@ -9,8 +9,8 @@ from utils import load_data, save_model, letter_based_encoding, z_descriptors, f
 PATH = Path(__file__).parent.parent
 
 
-def train_model(cv=10, model_params=None):
-    
+def train_model(cv=5, model_params=None):
+
     parser = argparse.ArgumentParser()
     parser.add_argument("--descriptor", required=True)
     args = parser.parse_args()
@@ -24,24 +24,22 @@ def train_model(cv=10, model_params=None):
     for i in range(cv):
 
         # Load datasets
-        X_train_df = load_data(PATH.joinpath(f'data/train/train_split_{i}.csv'))
-        
+        X_train_df = load_data(PATH.joinpath(f'data/my_train_human/train_split_{i}_human.csv'))
+
         # Load datasets and generate descriptors
         if args.descriptor == 'LBE':
-            X_train_df = load_data(PATH.joinpath(f'data/train/train_split_{i}.csv')) 
+            X_train_df = load_data(PATH.joinpath(f'data/my_train_human/train_split_{i}_human.csv'))
             X_train = letter_based_encoding(X_train_df)
 
-
         elif args.descriptor == 'ZS':
-            X_train_df = load_data(PATH.joinpath(f'data/train/train_split_{i}.csv'))
+            X_train_df = load_data(PATH.joinpath(f'data/my_train/train_split_{i}.csv'))
             X_train_df = filter_peptide_length(X_train_df, 15)
             X_train = z_descriptors(X_train_df)
-
 
         elif args.descriptor == 'EF':
             X_train_df = load_data(PATH.joinpath(f'data/embedding_features/train/train_split_{i}.csv'))
             X_train = X_train_df.iloc[:,:-1]
-        
+
         y_train = X_train_df['labels']
 
         # Train Random Forest model
@@ -49,7 +47,8 @@ def train_model(cv=10, model_params=None):
         model.fit(X_train, y_train)
 
         # Save the model
-        save_model(model, PATH.joinpath(f'models/trained_model_{args.descriptor}_{i}.pkl'))
+        save_model(model, PATH.joinpath(f'models/trained_model_human_{args.descriptor}_{i}.pkl'))
+
 
 if __name__ == "__main__":
     train_model()
